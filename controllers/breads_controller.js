@@ -19,8 +19,7 @@ breads.get('/:arrayIndex', (req, res) => {
         bread:Bread[req.params.arrayIndex]
       })
     } else {
-      res.send('Hey Dum Dum! You Messed Up!')
-      res.statusCode = 404
+      res.render('404')
     }
   })
   

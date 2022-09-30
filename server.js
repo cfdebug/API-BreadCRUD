@@ -22,8 +22,7 @@ app.use('/breads', breadsController)
 
 // 404 Page
 app.get('*', (req,res) => {
-    res.statusCode = 404
-    res.send('Hey Dum Dum! You Messed Up!')
+    res.render('404')
 })
 
 // LISTEN
