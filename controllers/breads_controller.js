@@ -47,6 +47,12 @@ breads.post('/', (req, res) => {
   } else {
     req.body.hasGluten = false
   }
+  if (!req.body.ingredients) {
+    req.body.ingredients = ['Ingredients not listed']
+  }else {
+    let arr = req.body.ingredients.split(',')
+    req.body.ingredients = arr
+  }
   Bread.push(req.body)
   res.redirect('/breads')
 })
@@ -63,6 +69,12 @@ breads.put('/:arrayIndex', (req, res) => {
     req.body.hasGluten = true
   } else {
     req.body.hasGluten = false
+  }
+  if (!req.body.ingredients) {
+    req.body.ingredients = ['Ingredients not listed']
+  }else {
+    let arr = req.body.ingredients.split(',')
+    req.body.ingredients = arr
   }
   Bread[req.params.arrayIndex] = req.body
   res.redirect(`/breads/${req.params.arrayIndex}`)

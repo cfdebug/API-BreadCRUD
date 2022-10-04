@@ -21,6 +21,12 @@ function New () {
             pattern="https?://.+"
             title='Include http:// or https://'
             />
+          <label htmlFor="ingredients">Ingredients separated by a comma</label>
+          <input
+            type="text"
+            name="ingredients"
+            id="ingredients"
+            />
           <label htmlFor="hasGluten">Has Gluten?</label>
           <input
             type="checkbox"

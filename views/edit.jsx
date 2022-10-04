@@ -21,6 +21,13 @@ function Edit ({bread, index}) {
             id="image"
             defaultValue={bread.image}
             />
+          <label htmlFor="ingredients">Ingredients separated by a comma</label>
+          <input
+            type="text"
+            name="ingredients"
+            id="ingredients"
+            defaultValue={bread.ingredients.toString()}
+            />
           <label htmlFor="hasGluten">Has Gluten?</label>
           <input
             type="checkbox"
