@@ -28,11 +28,11 @@ function Show ({bread, index}) {
     <input type='submit' value="GO HOME"/>
   </form>
 
-  <form className = 'bread-action' action={`/breads/${index}/edit`} method="GET">
+  <form className = 'bread-action' action={`/breads/${bread.id}/edit`} method="GET">
     <input type='submit' value="EDIT"/>
   </form>
 
-  <form className = 'bread-action' action={`/breads/${index}?_method=DELETE`} method="POST">
+  <form className = 'bread-action' action={`/breads/${bread.id}?_method=DELETE`} method="POST">
     <input type='submit' value="DELETE"/>
   </form>
 </Default>
