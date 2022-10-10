@@ -67,8 +67,17 @@ breads.post('/', (req, res) => {
     let arr = req.body.ingredients.split(',')
     req.body.ingredients = arr
   }
+  if (!req.body.baker) {
+    req.body.baker = 'Unknown'
+  }
   Bread.create(req.body)
-  res.redirect('/breads')
+  .then(newBread => {
+    res.redirect('/breads')
+  })
+  .catch(err => {
+    res.render('404')
+  })
+  
 })
 
 // CREATE MANY
@@ -100,10 +109,16 @@ breads.put('/:id', (req, res) => {
     let arr = req.body.ingredients.split(',')
     req.body.ingredients = arr
   }
-  Bread.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  if (!req.body.baker) {
+    req.body.baker = 'Unknown'
+  }
+  Bread.findByIdAndUpdate(req.params.id, req.body, {new: true , runValidators: true})
   .then(updatedBread => {
     console.log(updatedBread)
     res.redirect(`/breads/${req.params.id}`) 
+  })
+  .catch(err => {
+    res.render('404')
   })
   
 })

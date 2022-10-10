@@ -23,6 +23,7 @@ function Show ({bread, index}) {
       })
     }
   </ul>
+  <h5>Recipe Created By: {bread.baker}</h5>
   
   <form className = 'bread-action' action={'/breads/'} method="GET">
     <input type='submit' value="GO HOME"/>

@@ -8,7 +8,8 @@ const breadSchema = new Schema({
   name: {type: String, required: true},
   hasGluten: {type: Boolean},
   image: {type: String, default: '/images/favicon.ico'},
-  ingredients: {type:Array}
+  ingredients: {type:Array},
+  baker: {type: String, enum: ['Unknown', 'Rachel', 'Monica', 'Joey', 'Chandler', 'Ross', 'Phoebe']}
 })
 
 const Bread = mongoose.model('Bread', breadSchema)
