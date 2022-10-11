@@ -42,11 +42,14 @@ breads.get('/:id/edit', (req, res) => {
 
 // SHOW
 breads.get('/:id', (req, res) => {
-  console.log(req.params.id)
   Bread.findById(req.params.id)
     .then(foundBread => {
-      res.render('show', {
-        bread: foundBread
+      Bread.allBakedBy(foundBread.baker)
+      .then(allBreads => {
+        res.render('show', {
+          bread: foundBread,
+          breadList: allBreads
+        })
       })
     }).catch(err => {res.render('404')})
   })

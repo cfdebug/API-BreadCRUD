@@ -1,7 +1,8 @@
 const React = require('react')
 const Default = require('./layouts/default')
 
-function Show ({bread, index}) {
+function Show ({bread, breadList}) {
+  console.log(breadList)
       return (
 <Default title={bread.name}>
   <h3>{bread.name}</h3>
@@ -23,8 +24,20 @@ function Show ({bread, index}) {
       })
     }
   </ul>
-  <h5>Recipe Created By: {bread.baker}</h5>
-  
+
+  <h5>{bread.getBakedBy()}</h5>
+
+  <p>Other Breads By This Same Baker:</p>
+  <ul>
+    {
+      breadList.map((breadType) => {
+        if(bread.id != breadType.id){
+        return(<li><a href={`/breads/${breadType.id}`}>{breadType.name}</a></li>)
+        }
+      })
+    }
+  </ul>
+
   <form className = 'bread-action' action={'/breads/'} method="GET">
     <input type='submit' value="GO HOME"/>
   </form>
