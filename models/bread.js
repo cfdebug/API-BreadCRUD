@@ -9,7 +9,7 @@ const breadSchema = new Schema({
   hasGluten: {type: Boolean},
   image: {type: String, default: '/images/favicon.ico'},
   ingredients: {type:Array},
-  baker: {type: String, enum: ['Unknown', 'Rachel', 'Monica', 'Joey', 'Chandler', 'Ross', 'Phoebe']}
+  baker: {type: Schema.Types.Object, ref: 'Baker'}
 })
 
 // Helper Methods
