@@ -35,7 +35,6 @@ function Edit ({bread}) {
             id="hasGluten"
             defaultChecked={bread.hasGluten}
           />
-          {console.log(bread.baker)}
           <label htmlFor="baker">Recipe Created By</label>
           <select name="baker" id="baker" defaultValue={bread.baker}>
             <option disabled selected value='Unknown'> -- select an option -- </option>

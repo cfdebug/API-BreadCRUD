@@ -87,10 +87,8 @@ breads.post('/', (req, res) => {
 
 // DELETE
 breads.delete('/:id', (req, res) => {
-  console.log(req.params.id)
   Bread.findByIdAndDelete(req.params.id)
   .then(deletedBread => {
-    console.log(deletedBread)
     res.status(303).redirect('/breads')
   })
   .catch(err => {
@@ -117,7 +115,6 @@ breads.put('/:id', (req, res) => {
   }
   Bread.findByIdAndUpdate(req.params.id, req.body, {new: true , runValidators: true})
   .then(updatedBread => {
-    console.log(updatedBread)
     res.redirect(`/breads/${req.params.id}`) 
   })
   .catch(err => {

@@ -2,7 +2,6 @@ const React = require('react')
 const Default = require('./layouts/default')
 
 function Show ({bread, breadList}) {
-  console.log(breadList)
       return (
 <Default title={bread.name}>
   <h3>{bread.name}</h3>
