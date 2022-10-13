@@ -7,6 +7,7 @@ const Baker = require('../models/baker.js')
 // INDEX
 breads.get('/', (req, res) => {
   Bread.find()
+  .populate('baker')
   .then(foundBreads => {
   res.render('index',
   {
@@ -35,18 +36,22 @@ breads.get('/data/seed', (req, res) => {
 
 // EDIT
 breads.get('/:id/edit', (req, res) => {
-  Bread.findById(req.params.id)
-  .then(foundBread => {
-    res.render('edit', {
-      bread: foundBread
+  Baker.find()
+  .then(foundBakers => {
+    Bread.findById(req.params.id)
+    .then(foundBread => {
+      res.render('edit', {
+        bread: foundBread,
+        bakers: foundBakers
+      })
     })
   })
-
 })
 
 // SHOW
 breads.get('/:id', (req, res) => {
   Bread.findById(req.params.id)
+    .populate('baker')
     .then(foundBread => {
       Bread.allBakedBy(foundBread.baker)
       .then(allBreads => {
@@ -55,7 +60,10 @@ breads.get('/:id', (req, res) => {
           breadList: allBreads
         })
       })
-    }).catch(err => {res.render('404')})
+    }).catch(err => {
+      res.render('404')
+      console.log(err && err.message)
+    })
   })
 
 // CREATE
