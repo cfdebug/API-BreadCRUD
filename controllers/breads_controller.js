@@ -6,17 +6,22 @@ const Baker = require('../models/baker.js')
 
 // INDEX
 breads.get('/', (req, res) => {
-  Bread.find()
-  .populate('baker')
-  .then(foundBreads => {
-  res.render('index',
-  {
-    breads: foundBreads,
-    title: 'Index Page'
-  }
-  )
-})
-})
+  Baker.find()
+  .then(foundBakers => {
+    Bread.find()
+    .populate('baker')
+    .then(foundBreads => {
+    res.render('index',
+    {
+      breads: foundBreads,
+      title: 'Index Page',
+      bakers: foundBakers
+    }
+    )
+  })
+  })
+  })
+
 
 // NEW
 breads.get('/new', (req, res) => {
