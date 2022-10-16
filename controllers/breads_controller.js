@@ -4,13 +4,11 @@ const Bread = require('../models/bread.js')
 const Seed = require('../models/seed.js')
 const Baker = require('../models/baker.js')
 
-// INDEX
-breads.get('/', (req, res) => {
-  Baker.find()
-  .then(foundBakers => {
-    Bread.find()
-    .populate('baker')
-    .then(foundBreads => {
+// // INDEX
+breads.get('/', async (req, res) => {
+  const foundBakers = await Baker.find().lean()
+  const foundBreads = await Bread.find().populate('baker').limit(10)
+  console.log(foundBreads)
     res.render('index',
     {
       breads: foundBreads,
@@ -19,9 +17,6 @@ breads.get('/', (req, res) => {
     }
     )
   })
-  })
-  })
-
 
 // NEW
 breads.get('/new', (req, res) => {
