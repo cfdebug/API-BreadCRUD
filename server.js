@@ -19,12 +19,6 @@ app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride('_method'))
 
-// ROUTES
-app.get('/', (req,res) => {
-    // res.send('Welcome to an Awesome App about Breads!')
-    res.redirect('/breads/')
-})
-
 // Breads
 const breadsController = require('./controllers/breads_controller.js')
 app.use('/breads', breadsController)
@@ -32,6 +26,12 @@ app.use('/breads', breadsController)
 // Bakers
 const bakersController = require('./controllers/bakers_controller.js')
 app.use('/bakers', bakersController)
+
+// ROUTES
+app.get('/', (req,res) => {
+    // res.send('Welcome to an Awesome App about Breads!')
+    res.redirect('/breads/')
+})
 
 // 404 Page
 app.get('*', (req,res) => {
