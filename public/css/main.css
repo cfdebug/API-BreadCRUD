@@ -8,7 +8,7 @@ body {
     margin: auto;
   }
   
-  .bread-action {
+  .bread-action, .baker-action{
     display: inline;
     position: relative;
     top: 10px;

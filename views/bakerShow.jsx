@@ -19,10 +19,10 @@ function Show ({baker}) {
                 })
             }
           </ul>
-          <form className = 'bread-action' action={'/breads/'} method="GET">
+          <form className = 'baker-action' action={'/breads/'} method="GET">
             <input type='submit' value="GO HOME"/>
           </form>
-          <form action={`/bakers/${baker.id}?_method=DELETE`} method="POST">
+          <form className = 'baker-action' action={`/bakers/${baker.id}?_method=DELETE`} method="POST">
             <input type="submit" value='DELETE'/>
           </form>
       </Default>
