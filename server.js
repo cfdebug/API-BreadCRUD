@@ -21,7 +21,8 @@ app.use(methodOverride('_method'))
 
 // ROUTES
 app.get('/', (req,res) => {
-    res.send('Welcome to an Awesome App about Breads!')
+    // res.send('Welcome to an Awesome App about Breads!')
+    res.redirect('/breads')
 })
 
 // Breads
