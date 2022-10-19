@@ -61,7 +61,6 @@ breads.get('/:id', (req, res) => {
       })
     }).catch(err => {
       res.render('404')
-      console.log(err && err.message)
     })
   })
 
