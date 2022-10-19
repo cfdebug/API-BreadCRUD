@@ -29,8 +29,8 @@ app.use('/bakers', bakersController)
 
 // ROUTES
 app.get('/', (req,res) => {
-    res.send('Welcome to an Awesome App about Breads!')
-    // res.redirect('/breads/')
+    // res.send('Welcome to an Awesome App about Breads!')
+    res.redirect('/breads')
 })
 
 // 404 Page
