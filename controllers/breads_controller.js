@@ -8,7 +8,6 @@ const Baker = require('../models/baker.js')
 breads.get('/', async (req, res) => {
   const foundBakers = await Baker.find().lean()
   const foundBreads = await Bread.find().populate('baker').limit(10)
-  console.log(foundBreads)
     res.render('index',
     {
       breads: foundBreads,

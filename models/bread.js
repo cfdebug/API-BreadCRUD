@@ -17,8 +17,8 @@ breadSchema.methods.getBakedBy = function() {
   return `${this.name} was baked with love by ${this.baker.name}, who has been with us since ${this.baker.startDate.getFullYear()}`
 }
 
-breadSchema.statics.allBakedBy = function(name) {
-  return this.find({baker:name})
+breadSchema.statics.allBakedBy = function(baker) {
+  return this.find({baker:baker.id})
   }
 
   
